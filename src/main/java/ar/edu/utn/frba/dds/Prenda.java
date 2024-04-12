@@ -10,12 +10,27 @@ public class Prenda {
   private Color colorSecundario;
 
   public Prenda(Categoria categoria, Tipo tipo, String material, Color colorPrimario, Color colorSecundario) {
+    if (categoria == null) {
+      throw new IllegalArgumentException("La categoria no debe estar vacia");
+    }
     this.categoria = categoria;
+
+    if (tipo == null) {
+      throw new IllegalArgumentException("El tipo no debe estar vacio");
+    }
     this.tipo = tipo;
+
+    if (material == null) {
+      throw new IllegalArgumentException("El material no debe estar vacio");
+    }
     this.material = material;
+
+    if (colorPrimario == null) {
+      throw new IllegalArgumentException("El color primario no debe estar vacio");
+    }
     this.colorPrimario = colorPrimario;
+
     this.colorSecundario = colorSecundario;
   }
-  // Crear el objeto que chequee si una prenda correlaciona su clase y su tipo
+  // TODO : Crear cechequeo de si una prenda correlaciona su clase y su tipo
 }
-// Quiero evitar que haya prendas sin tipo, tela, categoría o color primario
