@@ -3,22 +3,20 @@ package ar.edu.utn.frba.dds;
 import java.awt.*;
 
 public class Prenda {
+  private TipoPrenda tipo;
   private Categoria categoria;
-  private Tipo tipo;
   private String material;
-  private Color colorPrimario;
-  private Color colorSecundario;
+  private ColorPrenda colorPrimario;
+  private ColorPrenda colorSecundario;
 
-  public Prenda(Categoria categoria, Tipo tipo, String material, Color colorPrimario, Color colorSecundario) {
-    if (categoria == null) {
-      throw new IllegalArgumentException("La categoria no debe estar vacia");
-    }
-    this.categoria = categoria;
-
+  // Constructor obligatorio
+  public Prenda(Categoria categoria, TipoPrenda tipo, String material, ColorPrenda colorPrimario, ColorPrenda colorSecundario) {
     if (tipo == null) {
       throw new IllegalArgumentException("El tipo no debe estar vacio");
     }
     this.tipo = tipo;
+
+    this.categoria = tipo.EsCategoria();
 
     if (material == null) {
       throw new IllegalArgumentException("El material no debe estar vacio");
@@ -32,5 +30,24 @@ public class Prenda {
 
     this.colorSecundario = colorSecundario;
   }
-  // TODO : Crear cechequeo de si una prenda correlaciona su clase y su tipo
+  // Constructor opcional
+  public Prenda(Categoria categoria, TipoPrenda tipo, String material, ColorPrenda colorPrimario) {
+    if (tipo == null) {
+      throw new IllegalArgumentException("El tipo no debe estar vacio");
+    }
+    this.tipo = tipo;
+
+    this.categoria = tipo.EsCategoria();
+
+    if (material == null) {
+      throw new IllegalArgumentException("El material no debe estar vacio");
+    }
+    this.material = material;
+
+    if (colorPrimario == null) {
+      throw new IllegalArgumentException("El color primario no debe estar vacio");
+    }
+    this.colorPrimario = colorPrimario;
+  }
 }
+
